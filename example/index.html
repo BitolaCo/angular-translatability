@@ -1,0 +1,32 @@
+<!doctype html>
+<html >
+<head>
+    <title>Example Usage - angular-translate</title>
+    <style>
+        .ng-cloak, [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-app="translateExample" ng-cloak>
+
+
+    <div ng-controller="testCtrl">
+        <select ng-model="language" ng-change="switchLanguage(language)">
+            <option value="">Select language</option>
+            <option value="en-us">English</option>
+            <option value="mk">Macedonian</option>
+            <option value="es">Espanol</option>
+        </select>
+
+        <span ng-bind="'Hello world' | translate:translator.current"></span>.
+        <span ng-bind="'Bye' | translate:translator.current"></span>!
+
+    </div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../angular-translate.js"></script>
+<script src="js/example.js"></script>
+</body>
+</html>
