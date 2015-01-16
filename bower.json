@@ -4,7 +4,7 @@
   "authors": [
     "Brad Berger <brad@bradb.net>"
   ],
-  "description": "AngularJS module for pain-free web app internationalization.",
+  "description": "AngularJS module for pain-free web app translations using natural-language strings.",
   "license": "MPL",
   "homepage": "https://github.com/BitolaCo/angular-translate",
   "ignore": [

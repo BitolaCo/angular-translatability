@@ -62,19 +62,37 @@ angular.module("angular.translate", [])
 
             };
 
-            this.use = function (lang) {
+            // This is a private function. Don't use it.
+            this.switchTo = function(lang) {
+
+                if (self.languages[lang]) {
+                    self.language = lang;
+                    self.current = self.languages[lang];
+                    return self.current;
+                } else {
+                    return false;
+                }
+
+            };
+
+            this.use = function (lang, src) {
 
                 var deferred = $q.defer();
 
-                $timeout(function() {
-                    if (self.languages[lang]) {
-                        self.language = lang;
-                        self.current = self.languages[lang];
-                        deferred.resolve(self.current);
-                    } else {
-                        deferred.reject("[angular-translate] Language " + lang + " is not defined. Will use supplied strings.");
-                    }
-                });
+                if(src) {
+                    this.load(lang.src)
+                        .then(function() {
+                            var langObj = self.switchTo(lang);
+                            if(success) {
+                                deferred.resolve(langObj);
+                            } else {
+                                deferred.reject("Could not load language " + lang);
+                            }
+                        })
+                        .catch(deferred.reject);
+                } else {
+                    deferred.resolve(self.switchTo(lang));
+                }
 
                 return deferred.promise;
 
