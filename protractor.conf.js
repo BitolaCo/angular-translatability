@@ -5,9 +5,6 @@ exports.config = {
     seleniumAddress: env.seleniumAddress,
     framework: "jasmine2",
     specs: ["tests/e2e/**/*.spec.js"],
-    suites: {
-        "all": "tests/e2e/**/*.spec.js"
-    },
     capabilities: env.capabilities,
     baseUrl: env.baseUrl,
     rootElement: "html",

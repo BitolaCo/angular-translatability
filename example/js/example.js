@@ -5,7 +5,7 @@ angular.module("translateExample", ["ngRoute", "angular.translate"])
         $scope.translator = new Dictionary();
 
         var mk = $scope.translator.add("mk", {
-            "Hello world": "Zdravo, cvet"
+            "Hello": "Zdravo"
         }).then(function(data) {
             $log.info("Added mk", data);
         }).catch(function(err) {

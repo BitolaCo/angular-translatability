@@ -1,5 +1,5 @@
 <!doctype html>
-<html >
+<html ng-app="translateExample" ng-cloak>
 <head>
     <title>Example Usage - angular-translate</title>
     <style>
@@ -8,21 +8,19 @@
         }
     </style>
 </head>
-<body ng-app="translateExample" ng-cloak>
+<body>
 
 
-    <div ng-controller="testCtrl">
-        <select ng-model="language" ng-change="switchLanguage(language)">
-            <option value="">Select language</option>
-            <option value="en-us">English</option>
-            <option value="mk">Macedonian</option>
-            <option value="es">Espanol</option>
-        </select>
+<div ng-controller="testCtrl">
 
-        <span ng-bind="'Hello world' | translate:translator.current"></span>.
-        <span ng-bind="'Bye' | translate:translator.current"></span>!
+    <a id="btn-en" href="#" ng-click="switchLanguage('en-us')">en-us</a>
+    <a id="btn-mk" href="#" ng-click="switchLanguage('mk')">mk</a>
+    <a id="btn-es" href="#" ng-click="switchLanguage('es')">es</a>
 
-    </div>
+    <span ng-bind="'Hello' | translate:translator.current"></span>.
+    <span ng-bind="'Bye' | translate:translator.current"></span>!
+
+</div>
 
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-route/angular-route.min.js"></script>

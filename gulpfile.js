@@ -11,7 +11,8 @@ var gulp = require("gulp"),
     glob = require("glob"),
     karma = require("gulp-karma"),
     rename = require("gulp-rename"),
-    runSequence = require("run-sequence");
+    runSequence = require("run-sequence"),
+    connect = require("gulp-connect");
 
 function p(src) {
     return __dirname + (src.charAt(0) === "/" ? "" : "/") + src;
@@ -27,7 +28,8 @@ gulp.task("lint", function () {
 gulp.task("jshint", function () {
     return gulp.src(p("angular-translate.js"))
         .pipe(jshint())
-        .pipe(jshint.reporter("jshint-stylish"));
+        .pipe(jshint.reporter("jshint-stylish"))
+        .pipe(connect.reload());
 });
 
 gulp.task("uglify", function() {
@@ -56,6 +58,12 @@ gulp.task("test", function() {
     }));
 });
 
-gulp.task("default", function() {
+gulp.task("connect", function() {
+    connect.server({
+        port: 8000
+    });
+});
+
+gulp.task("default", ["connect"], function() {
     runSequence("build", "watch");
 });
