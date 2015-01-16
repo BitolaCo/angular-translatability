@@ -1,5 +1,5 @@
 {
-  "name": "angular-translate",
+  "name": "angular-translatability",
   "version": "0.1.0",
   "description": "AngularJS module for pain-free web app translations using natural-language strings.",
   "main": "gulpfile.js",
